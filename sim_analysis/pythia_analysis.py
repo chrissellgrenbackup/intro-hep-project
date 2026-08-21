@@ -12,6 +12,8 @@ etas = []
 dphis = []
 masses = []
 
+print("looping over events")
+
 with pyhepmc.open(dirpath+filename) as f:
     for event in f:
         # create 4-vec object for all photons in event that are in final state
@@ -33,6 +35,18 @@ with pyhepmc.open(dirpath+filename) as f:
             dphi = np.abs(lead.phi-sublead.phi)
             if dphi > np.pi: dphi = 2*np.pi - dphi
             dphis.append(dphi)
+
+print("loop done")
+
+np.savez(
+    "/Users/chris/intro-hep-project/histodata/pythia_kin_histogram_data.npz",
+    pts_lead=pts_lead,
+    pts_sub=pts_sub,
+    etas=etas,
+    dphis=dphis,
+    masses=masses
+)
+print("saved events to /Users/chris/intro-hep-project/histodata/pythia_kin_histogram_data.npz")
 
 #fig, axes = plt.subplots(2,2,figsize=(12,10),dpi=400)
 #plt.title("Photon Kinematics after Pythia8 Showering")
@@ -79,11 +93,11 @@ with pyhepmc.open(dirpath+filename) as f:
 #plt.savefig(figname)
 #print("Analysis complete, figure saved as " + figname)
 
-print("Doing tests on number of photons that pass test")
-print("Num photons with no eta restriction: "+str(len(etas)))
-etas_survive = [eta for eta in etas if np.abs(eta) < 2.37]
-print("Num photons passing eta restriction: "+str(len(etas_survive)))
-pts_sub_survive = [pt for pt in pts_sub if pt > 10]
-print("Num sublead photons passing pt restriction: "+str(len(pts_sub_survive)))
-pts_lead_survive = [pt for pt in pts_lead if pt > 10]
-print("Num lead photons passing pt restriction: "+str(len(pts_lead_survive)))
+#print("Doing tests on number of photons that pass test")
+#print("Num photons with no eta restriction: "+str(len(etas)))
+#etas_survive = [eta for eta in etas if np.abs(eta) < 2.37]
+#print("Num photons passing eta restriction: "+str(len(etas_survive)))
+#pts_sub_survive = [pt for pt in pts_sub if pt > 10]
+#print("Num sublead photons passing pt restriction: "+str(len(pts_sub_survive)))
+#pts_lead_survive = [pt for pt in pts_lead if pt > 10]
+#print("Num lead photons passing pt restriction: "+str(len(pts_lead_survive)))
