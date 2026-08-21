@@ -53,12 +53,13 @@ numbins = 100
 xmin = 120
 xmax = 130
 binwidth = (xmax-xmin)/numbins
-plt.figure(figsize=(6,4),dpi=300)
-plt.hist(masses,bins=numbins,range=(xmin,xmax),color='pink',edgecolor='red')
-plt.title(r'$H \to \gamma\gamma$',fontsize=14)
-plt.xlabel('Invariant Mass',fontsize=12)
+plt.figure(figsize=(5,4),dpi=300)
+plt.hist(masses,bins=numbins,range=(123,128),color='pink',edgecolor='red')
+plt.title(r'$H \to \gamma\gamma$ events from MadGraph5\_aMC@NLO',fontsize=14)
+plt.xlabel(r'Invariant Mass $m_{\gamma\gamma}$',fontsize=12)
 plt.ylabel(f'Counts / {binwidth} GeV',fontsize=12)
 plt.grid(alpha=0.3)
-figname = "higgs_invarmass_lhe.png"
+figname = "sim_analysis/plots/madgraph_higgs_invarmass.png"
+plt.tight_layout()
 plt.savefig(figname)
 print("Analysis complete, figure saved as " + figname)
