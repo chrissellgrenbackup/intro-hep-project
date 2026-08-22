@@ -88,7 +88,7 @@ axes[1, 1].set_ylabel('Events',fontsize=14)
 
 # export the data to read into the Hgg_analysis notebook (for side by side data vs. MC plots)
 np.savez(
-    "mg_kin_histogram_data.npz",
+    "/Users/chris/intro-hep-project/histodata/mg_kin_histogram_data.npz",
     pts_lead=pts_lead,
     pts_sub=pts_sub,
     etas=etas,

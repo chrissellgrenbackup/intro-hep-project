@@ -63,3 +63,8 @@ figname = "sim_analysis/plots/madgraph_higgs_invarmass.png"
 plt.tight_layout()
 plt.savefig(figname)
 print("Analysis complete, figure saved as " + figname)
+
+np.savez(
+    "mg_hmass_histogram_data.npz",
+    masses=masses,
+)
